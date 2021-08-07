@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_contract.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/01 15:58:46 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/08/07 15:44:37 by ioleinik         ###   ########.fr       */
+/*   Created: 2021/08/07 15:34:08 by ioleinik          #+#    #+#             */
+/*   Updated: 2021/08/07 15:52:05 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+int	check_contract(int argc, char **argv, t_data phil)
 {
-	t_data	phil;
-
-	phil = NULL;
-	if (check_contract(argc, argv, phil) == -1)
-		return (1);
+	phil = (t_data)malloc(sizeof(struct s_data));
+	if (NULL == phil)
+		return (-1);
+	
 }

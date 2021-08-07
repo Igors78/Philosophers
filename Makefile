@@ -6,7 +6,7 @@
 #    By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/01 15:53:17 by ioleinik          #+#    #+#              #
-#    Updated: 2021/08/01 15:56:52 by ioleinik         ###   ########.fr        #
+#    Updated: 2021/08/07 15:34:03 by ioleinik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME		= philo
 
 MAKE		= make
 
-SRC			= main.c
+SRC			= main.c check_contract.c
 
 OBJ			= ${SRC:.c=.o}
 
