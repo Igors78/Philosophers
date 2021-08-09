@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:59:00 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/08/07 15:42:49 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/08/09 09:31:23 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define GRAY	"\033[1;30m"
 # define CYAN	"\033[1;36m"
 # define RED	"\033[1;31m"
+# define RESET	"\x1b[0m"
 
 typedef struct s_data
 {
