@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:59:00 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/08/11 14:09:50 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/17 09:31:15 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@
 # define CYAN	"\033[1;36m"
 # define RED	"\033[1;31m"
 # define RESET	"\x1b[0m"
+
+# define THINKING	0
+# define HUNGRY		1
+# define EATING		2
 
 typedef struct s_data
 {
