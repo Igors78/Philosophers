@@ -6,7 +6,7 @@
 #    By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/01 15:53:17 by ioleinik          #+#    #+#              #
-#    Updated: 2021/08/07 15:34:03 by ioleinik         ###   ########.fr        #
+#    Updated: 2021/09/19 22:15:58 by ioleinik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,6 @@ CFLAGS		= -Wall -Wextra -Werror -g
 RM			= rm -f
 
 NAME		= philo
-
-MAKE		= make
 
 SRC			= main.c check_contract.c
 
