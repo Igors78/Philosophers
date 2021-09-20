@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:59:00 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/17 20:15:10 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/20 19:25:43 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_data
 	int			time_eat;
 	int			time_sleep;
 	int			num_eat;
-	pthread_t	*phils;
 }				*t_data;
 
 int	check_contract(int argc, char **argv, t_data phil);

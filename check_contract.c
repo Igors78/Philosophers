@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 15:34:08 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/18 06:35:44 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/20 19:27:37 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static void	init_phil(t_data phil, int argc, char **argv)
 	phil->num_eat = 0;
 	if (argc == 6)
 		phil->num_eat = ft_atoi(argv[5]);
-	phil->phils = NULL;
 }
 
 int	check_contract(int argc, char **argv, t_data phil)
@@ -73,8 +72,6 @@ int	check_contract(int argc, char **argv, t_data phil)
 		|| phil->time_sleep <= 0)
 		return (-1);
 	if (argc == 6 && phil->num_eat <= 0)
-		return (-1);
-	if (alloc_phils(phil) == -1)
 		return (-1);
 	return (0);
 }
