@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:59:00 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/20 19:25:43 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/21 20:30:13 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@
 # define HUNGRY		1
 # define EATING		2
 
+typedef struct s_phil
+{
+	int			time_die;
+	int			time_eat;
+	int			time_sleep;
+	int			num_eat;
+}				t_phil;
+
 typedef struct s_data
 {
 	int			num_phil;
@@ -39,6 +47,7 @@ typedef struct s_data
 	int			time_eat;
 	int			time_sleep;
 	int			num_eat;
+	t_phil		*phil;
 }				*t_data;
 
 int	check_contract(int argc, char **argv, t_data phil);

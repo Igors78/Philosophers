@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 15:34:08 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/20 19:27:37 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/21 20:46:00 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,37 +41,57 @@ static int	ft_atoi(const char *str)
 	return (((int)res * sign));
 }
 
-static int	alloc_phils(t_data phil)
+static int	alloc_phils(t_data data)
 {
-	phil->phils = (pthread_t *)malloc(sizeof(pthread_t) * (phil->num_phil));
-	if (NULL == phil->phils)
+	int	i;
+
+	i = 0;
+	data->phil = (t_phil *)malloc(sizeof(struct s_phil) * (data->num_phil));
+	if (NULL == data->phil)
+		return (-1);
+	while (i < data->num_phil)
+	{
+		data->phil[i].time_die = data->time_die;
+		data->phil[i].time_eat = data->time_eat;
+		data->phil[i].time_sleep = data->time_sleep;
+		data->phil[i].num_eat = data->num_eat;
+		printf("%d phil %d number\n", i, data->phil[i].time_die);
+		printf("%d phil %d number\n", i, data->phil[i].time_eat);
+		printf("%d phil %d number\n", i, data->phil[i].time_sleep);
+		printf("%d phil %d number\n", i, data->phil[i].num_eat);
+		i++;
+	}
+	return (0);
+}
+
+static int	init_data(t_data data, int argc, char **argv)
+{
+	data->num_phil = ft_atoi(argv[1]);
+	data->time_die = ft_atoi(argv[2]);
+	data->time_eat = ft_atoi(argv[3]);
+	data->time_sleep = ft_atoi(argv[4]);
+	data->num_eat = 0;
+	if (argc == 6)
+		data->num_eat = ft_atoi(argv[5]);
+	data->phil = NULL;
+	if (alloc_phils(data))
 		return (-1);
 	return (0);
 }
 
-static void	init_phil(t_data phil, int argc, char **argv)
+int	check_contract(int argc, char **argv, t_data data)
 {
-	phil->num_phil = ft_atoi(argv[1]);
-	phil->time_die = ft_atoi(argv[2]);
-	phil->time_eat = ft_atoi(argv[3]);
-	phil->time_sleep = ft_atoi(argv[4]);
-	phil->num_eat = 0;
-	if (argc == 6)
-		phil->num_eat = ft_atoi(argv[5]);
-}
-
-int	check_contract(int argc, char **argv, t_data phil)
-{
-	phil = (t_data)malloc(sizeof(struct s_data));
-	if (NULL == phil)
+	data = (t_data)malloc(sizeof(struct s_data));
+	if (NULL == data)
 		return (-1);
 	if (argc != 5 && argc != 6)
 		return (-1);
-	init_phil(phil, argc, argv);
-	if (phil->num_phil <= 0 || phil->time_die <= 0 || phil->time_eat <= 0
-		|| phil->time_sleep <= 0)
+	if (init_data(data, argc, argv))
 		return (-1);
-	if (argc == 6 && phil->num_eat <= 0)
+	if (data->num_phil <= 0 || data->time_die <= 0 || data->time_eat <= 0
+		|| data->time_sleep <= 0)
+		return (-1);
+	if (argc == 6 && data->num_eat <= 0)
 		return (-1);
 	return (0);
 }
