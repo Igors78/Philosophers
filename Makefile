@@ -6,7 +6,7 @@
 #    By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/01 15:53:17 by ioleinik          #+#    #+#              #
-#    Updated: 2021/09/19 22:15:58 by ioleinik         ###   ########.fr        #
+#    Updated: 2021/09/21 21:08:23 by ioleinik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJ			= ${SRC:.c=.o}
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-			$(CC) -I. $(CFLAGS) -o $(NAME) $(OBJ)
+			$(CC) -I. $(CFLAGS) -o $(NAME) $(OBJ) -lpthread
 
 clean:		
 			$(RM) $(OBJ)

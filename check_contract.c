@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 15:34:08 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/21 20:46:00 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/21 21:33:01 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	alloc_phils(t_data data)
 	while (i < data->num_phil)
 	{
 		data->phil[i].time_die = data->time_die;
-		data->phil[i].time_eat = data->time_eat;
+		data->phil[i].time_eat = data->time_eat + i;
 		data->phil[i].time_sleep = data->time_sleep;
 		data->phil[i].num_eat = data->num_eat;
 		printf("%d phil %d number\n", i, data->phil[i].time_die);
@@ -81,9 +81,6 @@ static int	init_data(t_data data, int argc, char **argv)
 
 int	check_contract(int argc, char **argv, t_data data)
 {
-	data = (t_data)malloc(sizeof(struct s_data));
-	if (NULL == data)
-		return (-1);
 	if (argc != 5 && argc != 6)
 		return (-1);
 	if (init_data(data, argc, argv))
