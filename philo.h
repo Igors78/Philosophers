@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:59:00 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/22 10:44:21 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/22 16:43:57 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,21 @@
 
 typedef struct s_phil
 {
+	int				ph_nbr;
 	int				num_phil;
 	int				time_die;
 	int				time_eat;
 	int				time_sleep;
 	int				num_eat;
-	struct timeval	stamp;
+	struct timeval	start;
+	struct timeval	end;
 }				*t_phil;
+
+typedef struct s_arg
+{
+	t_phil			phil;
+	pthread_mutex_t	*forks;
+}				*t_arg;
 
 int	check_contract(int argc, char **argv);
 int	ft_atoi(const char *str);

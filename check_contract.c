@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 15:34:08 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/22 10:36:22 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/22 11:15:27 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,6 @@ int	init_philos(t_phil *philos, int argc, char **argv)
 		philos[i]->num_eat = 0;
 		if (argc == 6)
 			philos[i]->num_eat = ft_atoi(argv[5]);
-		printf("%d phil %d number\n", i, philos[i]->num_phil);
-		printf("%d phil %d number\n", i, philos[i]->time_die);
-		printf("%d phil %d number\n", i, philos[i]->time_eat);
-		printf("%d phil %d number\n", i, philos[i]->time_sleep);
-		printf("%d phil %d number\n", i, philos[i]->num_eat);
 		i++;
 	}
 	return (0);
