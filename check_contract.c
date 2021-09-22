@@ -6,13 +6,13 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 15:34:08 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/21 21:33:01 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/22 10:36:22 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int			i;
 	long long	res;
@@ -41,54 +41,38 @@ static int	ft_atoi(const char *str)
 	return (((int)res * sign));
 }
 
-static int	alloc_phils(t_data data)
+int	init_philos(t_phil *philos, int argc, char **argv)
 {
 	int	i;
 
 	i = 0;
-	data->phil = (t_phil *)malloc(sizeof(struct s_phil) * (data->num_phil));
-	if (NULL == data->phil)
-		return (-1);
-	while (i < data->num_phil)
+	while (i < ft_atoi(argv[1]))
 	{
-		data->phil[i].time_die = data->time_die;
-		data->phil[i].time_eat = data->time_eat + i;
-		data->phil[i].time_sleep = data->time_sleep;
-		data->phil[i].num_eat = data->num_eat;
-		printf("%d phil %d number\n", i, data->phil[i].time_die);
-		printf("%d phil %d number\n", i, data->phil[i].time_eat);
-		printf("%d phil %d number\n", i, data->phil[i].time_sleep);
-		printf("%d phil %d number\n", i, data->phil[i].num_eat);
+		philos[i]->num_phil = ft_atoi(argv[1]);
+		philos[i]->time_die = ft_atoi(argv[2]);
+		philos[i]->time_eat = ft_atoi(argv[3]);
+		philos[i]->time_sleep = ft_atoi(argv[4]);
+		philos[i]->num_eat = 0;
+		if (argc == 6)
+			philos[i]->num_eat = ft_atoi(argv[5]);
+		printf("%d phil %d number\n", i, philos[i]->num_phil);
+		printf("%d phil %d number\n", i, philos[i]->time_die);
+		printf("%d phil %d number\n", i, philos[i]->time_eat);
+		printf("%d phil %d number\n", i, philos[i]->time_sleep);
+		printf("%d phil %d number\n", i, philos[i]->num_eat);
 		i++;
 	}
 	return (0);
 }
 
-static int	init_data(t_data data, int argc, char **argv)
-{
-	data->num_phil = ft_atoi(argv[1]);
-	data->time_die = ft_atoi(argv[2]);
-	data->time_eat = ft_atoi(argv[3]);
-	data->time_sleep = ft_atoi(argv[4]);
-	data->num_eat = 0;
-	if (argc == 6)
-		data->num_eat = ft_atoi(argv[5]);
-	data->phil = NULL;
-	if (alloc_phils(data))
-		return (-1);
-	return (0);
-}
-
-int	check_contract(int argc, char **argv, t_data data)
+int	check_contract(int argc, char **argv)
 {
 	if (argc != 5 && argc != 6)
 		return (-1);
-	if (init_data(data, argc, argv))
+	if (ft_atoi(argv[1]) < 1 || ft_atoi(argv[2]) < 1 || ft_atoi(argv[3]) < 1
+		|| ft_atoi(argv[4]) < 1)
 		return (-1);
-	if (data->num_phil <= 0 || data->time_die <= 0 || data->time_eat <= 0
-		|| data->time_sleep <= 0)
-		return (-1);
-	if (argc == 6 && data->num_eat <= 0)
+	if (argc == 6 && ft_atoi(argv[5]) < 1)
 		return (-1);
 	return (0);
 }

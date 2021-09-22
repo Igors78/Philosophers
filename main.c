@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:58:46 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/21 21:33:24 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/22 10:44:43 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,34 @@
 
 int	main(int argc, char **argv)
 {
-	pthread_t	*philos;
-	t_data		data;
+	pthread_t	*th;
+	t_phil		*philos;
+	int			phil_num;
+	int			i;
 
-	data = NULL;
-	data = (t_data)malloc(sizeof(struct s_data));
-	if (NULL == data)
+	i = 0;
+	if (check_contract(argc, argv))
 		return (-1);
-	if (check_contract(argc, argv, data) == -1)
-		return (1);
+	phil_num = ft_atoi(argv[1]);
 	philos = NULL;
-	printf("%d phils\n", data->phil[2].time_eat);
-	philos = (pthread_t *)malloc(sizeof(pthread_t) * (data->num_phil));
+	philos = (t_phil *)malloc(sizeof(t_phil) * phil_num);
 	if (NULL == philos)
+		return (-1);
+	while (i < phil_num)
+	{
+		philos[i] = (t_phil)malloc(sizeof(struct s_phil));
+		if (NULL == philos[i])
+			return (-1);
+		i++;
+	}
+	if (init_philos(philos, argc, argv))
+		return (-1);
+	gettimeofday(&philos[0]->stamp, NULL);
+	printf("seconds : %ld\nmicro seconds : %ld\n",
+		philos[0]->stamp.tv_sec, philos[0]->stamp.tv_usec);
+	th = NULL;
+	th = (pthread_t *)malloc(sizeof(pthread_t) * phil_num);
+	if (NULL == th)
 		return (-1);
 	return (0);
 }
