@@ -6,40 +6,11 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 15:34:08 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/23 12:54:31 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/23 20:39:54 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-int	ft_atoi(const char *str)
-{
-	int			i;
-	long long	res;
-	int			sign;
-
-	i = 0;
-	sign = 1;
-	res = 0;
-	while ((str[i] != '\0') && (str[i] == ' ' || str[i] == '\f'
-			|| str[i] == '\n' || str[i] == '\r'
-			|| str[i] == '\t' || str[i] == '\v'))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
-	{
-		res = res * 10 + (str[i] - '0');
-		if (res > 2147483648 || res < -2147483649)
-			return (0);
-		i++;
-	}
-	return (((int)res * sign));
-}
 
 void	init_philos(t_phil *philos, int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:59:00 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/23 13:12:33 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/23 20:42:05 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_arg
 
 int		check_contract(int argc, char **argv);
 int		ft_atoi(const char *str);
+int		ft_terror(char *s);
 void	init_philos(t_phil *philos, int argc, char **argv);
 int		init_forks(t_arg args, int phil_num);
 void	*routine(void *arg);
