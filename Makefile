@@ -6,7 +6,7 @@
 #    By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/01 15:53:17 by ioleinik          #+#    #+#              #
-#    Updated: 2021/09/23 20:40:41 by ioleinik         ###   ########.fr        #
+#    Updated: 2021/09/24 12:53:59 by ioleinik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ RM			= rm -f
 
 NAME		= philo
 
-SRC			= main.c check_contract.c routine.c utils.c
+SRC			= main.c check_init.c routine.c utils.c
 
 OBJ			= ${SRC:.c=.o}
 

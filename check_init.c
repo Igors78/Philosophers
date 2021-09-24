@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_contract.c                                   :+:      :+:    :+:   */
+/*   check_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 15:34:08 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/23 20:39:54 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/24 12:56:22 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ int	init_forks(t_arg args, int phil_num)
 int	check_contract(int argc, char **argv)
 {
 	if (argc != 5 && argc != 6)
-		return (-1);
+		return (ft_terror("Argument error"));
 	if (ft_atoi(argv[1]) < 1 || ft_atoi(argv[2]) < 1 || ft_atoi(argv[3]) < 1
 		|| ft_atoi(argv[4]) < 1)
-		return (-1);
+		return (ft_terror("Argument error"));
 	if (argc == 6 && ft_atoi(argv[5]) < 1)
-		return (-1);
+		return (ft_terror("Argument error"));
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 17:33:13 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/22 17:38:06 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/24 12:58:55 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+// #include "philo.h"
 
-void	*routine(void *arg)
-{
+// void	*routine(void *arg)
+// {
 
-}
+// }
