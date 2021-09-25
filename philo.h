@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:59:00 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/23 20:42:05 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/25 11:06:23 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,28 +34,29 @@
 
 typedef struct s_phil
 {
-	int				th_nbr;
+	int				th_id;
+	int				left_fork;
+	int				right_fork;
+	struct			s_arg;
+	pthread_t		thread_id;
+}				t_phil;
+
+typedef struct s_arg
+{
 	int				num_phil;
 	int				time_die;
 	int				time_eat;
 	int				time_sleep;
 	int				num_eat;
-	struct timeval	start;
-	struct timeval	end;
-}				t_phil;
-
-typedef struct s_arg
-{
-	t_phil			phil;
+	t_phil			*phils;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	access;
-}				*t_arg;
+	pthread_mutex_t	get_write;
+}				t_arg;
 
-int		check_contract(int argc, char **argv);
+int		check_contract(t_arg *args, int argc, char **argv);
 int		ft_atoi(const char *str);
 int		ft_terror(char *s);
-void	init_philos(t_phil *philos, int argc, char **argv);
-int		init_forks(t_arg args, int phil_num);
 void	*routine(void *arg);
 
 #endif
