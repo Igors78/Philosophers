@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 15:34:08 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/25 11:28:13 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/25 18:46:58 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int	init_phil(t_arg *args)
 	while (i < args->num_phil)
 	{
 		args->phils[i].ph_id = i;
+		args->phils[i].count = 0;
 		args->phils[i].left_fork = i;
 		args->phils[i].right_fork = (i + 1) % args->num_phil;
 		args->phils[i].args = args;

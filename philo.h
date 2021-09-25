@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:59:00 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/25 16:48:44 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/25 18:46:21 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@
 typedef struct s_phil
 {
 	int				ph_id;
+	int				count;
 	unsigned int	left_fork;
 	unsigned int	right_fork;
-	unsigned long	when_die;
+	long long		when_die;
 	struct s_arg	*args;
 	pthread_t		thread_id;
 }				t_phil;
