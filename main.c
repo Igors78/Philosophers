@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:58:46 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/25 16:13:00 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/25 16:15:37 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	create_th(t_arg *args)
 
 	i = 0;
 	args->start = get_time();
-	printf("%lu start", args->start);
 	while (i < args->num_phil)
 	{
 		args->phils[i].when_die = get_time();
