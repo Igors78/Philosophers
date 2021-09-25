@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 20:39:15 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/23 20:41:43 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/25 12:21:01 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,14 @@ int	ft_terror(char *s)
 {
 	printf("%s\n", s);
 	return (-1);
+}
+
+unsigned long	get_time(void)
+{
+	struct timeval	timing;
+	unsigned long	time;
+
+	gettimeofday(&timing, NULL);
+	time = (timing.tv_sec * 1000) + (timing.tv_usec / 1000);
+	return (time);
 }

@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:59:00 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/25 11:06:23 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/25 12:42:25 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@
 
 typedef struct s_phil
 {
-	int				th_id;
-	int				left_fork;
-	int				right_fork;
-	struct			s_arg;
+	int				ph_id;
+	unsigned int	left_fork;
+	unsigned int	right_fork;
+	unsigned long	when_die;
+	struct s_arg	*args;
 	pthread_t		thread_id;
 }				t_phil;
 
@@ -48,15 +49,17 @@ typedef struct s_arg
 	int				time_eat;
 	int				time_sleep;
 	int				num_eat;
+	unsigned long	start;
 	t_phil			*phils;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	access;
 	pthread_mutex_t	get_write;
 }				t_arg;
 
-int		check_contract(t_arg *args, int argc, char **argv);
-int		ft_atoi(const char *str);
-int		ft_terror(char *s);
-void	*routine(void *arg);
+int				check_contract(t_arg *args, int argc, char **argv);
+int				ft_atoi(const char *str);
+int				ft_terror(char *s);
+unsigned long	get_time(void);
+void			*routine(void *philosoph);
 
 #endif

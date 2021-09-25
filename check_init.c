@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 15:34:08 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/25 11:07:27 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/25 11:28:13 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,21 @@
 
 static int	init_phil(t_arg *args)
 {
-	
+	int	i;
+
+	i = 0;
+	args->phils = malloc(sizeof(struct s_phil) * args->num_phil);
+	if (NULL == args->phils)
+		return (ft_terror("Memory allocation for philosophers failed"));
+	while (i < args->num_phil)
+	{
+		args->phils[i].ph_id = i;
+		args->phils[i].left_fork = i;
+		args->phils[i].right_fork = (i + 1) % args->num_phil;
+		args->phils[i].args = args;
+		i++;
+	}
+	return (0);
 }
 
 static int	init_mutex(t_arg *args)
