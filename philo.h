@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:59:00 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/25 12:42:25 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/25 16:03:59 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,14 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-# define YELLOW	"\033[1;33m"
-# define GREEN	"\033[1;32m"
-# define BLUE	"\033[1;34m"
-# define PINK	"\033[1;35m"
-# define GRAY	"\033[1;30m"
-# define CYAN	"\033[1;36m"
-# define RED	"\033[1;31m"
-# define RESET	"\x1b[0m"
-
-# define THINKING	0
-# define HUNGRY		1
-# define EATING		2
+# define YL	"\033[1;33m"
+# define GN	"\033[1;32m"
+# define BL	"\033[1;34m"
+# define PK	"\033[1;35m"
+# define GR	"\033[1;30m"
+# define CY	"\033[1;36m"
+# define RD	"\033[1;31m"
+# define CLR	"\x1b[0m"
 
 typedef struct s_phil
 {
@@ -49,6 +45,7 @@ typedef struct s_arg
 	int				time_eat;
 	int				time_sleep;
 	int				num_eat;
+	int				finish;
 	unsigned long	start;
 	t_phil			*phils;
 	pthread_mutex_t	*forks;
@@ -59,6 +56,7 @@ typedef struct s_arg
 int				check_contract(t_arg *args, int argc, char **argv);
 int				ft_atoi(const char *str);
 int				ft_terror(char *s);
+void			m_print(t_arg *args, char *str, int id);
 unsigned long	get_time(void);
 void			*routine(void *philosoph);
 
