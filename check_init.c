@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 15:34:08 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/26 09:30:24 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/26 13:09:59 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,23 @@ static int	init_mutex(t_arg *args)
 	int	i;
 
 	i = 0;
-	if (pthread_mutex_init(&args->chopchop, NULL))
+	if (pthread_mutex_init(&args->get_write, NULL))
 		return (ft_terror("Mutex initialization failed"));
 	if (pthread_mutex_init(&args->access, NULL))
 		return (ft_terror("Mutex initialization failed"));
-	if (pthread_mutex_init(&args->get_write, NULL))
-		return (ft_terror("Mutex initialization failed"));
 	args->forks = malloc(sizeof(pthread_mutex_t) * args->num_phil);
-	if (NULL == args->forks)
+	args->state = malloc(sizeof(int) * args->num_phil);
+	if (NULL == args->forks || NULL == args->state)
 		return (ft_terror("Memory allocation failed"));
 	while (i < args->num_phil)
 	{
 		if (pthread_mutex_init(&args->forks[i], NULL))
 			return (ft_terror("Mutex initialization failed"));
+		args->state[i] = 1;
 		i++;
 	}
+	if (pthread_mutex_init(&args->chopchop, NULL))
+		return (ft_terror("Mutex initialization failed"));
 	return (0);
 }
 

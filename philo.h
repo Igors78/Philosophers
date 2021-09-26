@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:59:00 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/26 09:30:54 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/26 13:07:35 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_arg
 	int				time_sleep;
 	int				num_eat;
 	int				finish;
+	int				*state;
 	long long		start;
 	t_phil			*phils;
 	pthread_mutex_t	*forks;
