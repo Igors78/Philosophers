@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:58:46 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/25 17:15:34 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/26 09:29:51 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	create_th(t_arg *args)
 	args->finish = 0;
 	while (i < args->num_phil)
 	{
-		args->phils[i].when_die = get_time();
+		args->phils[i].startsim = get_time();
 		rout_v = (void *)&(args->phils[i]);
 		if (pthread_create(&(args->phils[i].thread_id), NULL, routine, rout_v))
 			return (ft_terror("Thread creation failed"));
