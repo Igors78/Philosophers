@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:58:46 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/26 16:07:44 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/26 16:30:48 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,9 @@ int	main(int argc, char **argv)
 	t_arg	args;
 
 	if (check_contract(&args, argc, argv))
-	{
-		clean_up(&args);
 		return (-1);
-	}
 	if (create_th(&args))
-	{
-		clean_up(&args);
 		return (-1);
-	}
 	clean_up(&args);
 	return (0);
 }

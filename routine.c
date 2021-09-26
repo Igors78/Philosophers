@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 17:33:13 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/26 16:18:01 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/26 16:34:25 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	check_cycle(t_arg *args, t_phil *phil)
 		return (-1);
 	}
 	if (phil->count == 0)
-		phil->last_eat = phil->startsim;
+		phil->last_eat = args->start;
 	if (get_time() - phil->last_eat >= args->time_die)
 	{
 		m_print(args, "died", phil->ph_id);
@@ -51,9 +51,9 @@ static void	eat(t_arg *args, t_phil *phil)
 {
 	phil->last_eat = get_time();
 	m_print(args, "eating", phil->ph_id);
-	phil->count++;
 	usleep(args->time_eat * 1000);
 	drop_forks(args, phil);
+	phil->count++;
 	m_print(args, "sleeping", phil->ph_id);
 	usleep(args->time_sleep * 1000);
 	m_print(args, "thinking", phil->ph_id);
