@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 15:34:08 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/26 13:09:59 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/26 15:32:48 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	check_contract(t_arg *args, int argc, char **argv)
 	args->time_eat = ft_atoi(argv[3]);
 	args->time_sleep = ft_atoi(argv[4]);
 	args->num_eat = 0;
+	args->finish = 0;
 	if (argc == 6)
 		args->num_eat = ft_atoi(argv[5]);
 	if (init_mutex(args))

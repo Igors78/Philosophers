@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:58:46 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/26 14:09:48 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/26 15:29:46 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ static int	create_th(t_arg *args)
 	int		i;
 
 	i = 0;
-	args->start = get_time();
-	args->finish = 0;
 	while (i < args->num_phil)
 	{
 		args->phils[i].startsim = get_time();
@@ -28,7 +26,9 @@ static int	create_th(t_arg *args)
 			return (ft_terror("Thread creation failed"));
 		i++;
 	}
+	args->start = get_time();
 	i = 0;
+	usleep(1000);
 	while (i < args->num_phil)
 	{
 		if (pthread_join((args->phils[i].thread_id), NULL))
