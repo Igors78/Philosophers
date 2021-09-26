@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 17:33:13 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/26 15:38:12 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/26 16:18:01 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	*routine(void *philosoph)
 		if (check_cycle(args, phil))
 			break ;
 		take_forks(args, phil);
+		printf(RD "TIMES EATEN %d\n" CLR, phil->count);
 	}
 	return (NULL);
 }

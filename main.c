@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 15:58:46 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/26 15:29:46 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/26 16:07:44 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	create_th(t_arg *args)
 	int		i;
 
 	i = 0;
+	args->start = get_time();
 	while (i < args->num_phil)
 	{
 		args->phils[i].startsim = get_time();
@@ -26,7 +27,6 @@ static int	create_th(t_arg *args)
 			return (ft_terror("Thread creation failed"));
 		i++;
 	}
-	args->start = get_time();
 	i = 0;
 	usleep(1000);
 	while (i < args->num_phil)
@@ -38,13 +38,38 @@ static int	create_th(t_arg *args)
 	return (0);
 }
 
+static void	clean_up(t_arg *args)
+{
+	int	i;
+
+	i = 0;
+	pthread_mutex_destroy(&args->get_write);
+	pthread_mutex_destroy(&args->access);
+	pthread_mutex_destroy(&args->chopchop);
+	while (i < args->num_phil)
+	{
+		pthread_mutex_destroy(&args->forks[i]);
+		i++;
+	}
+	free(args->forks);
+	free(args->state);
+	free(args->phils);
+}
+
 int	main(int argc, char **argv)
 {
 	t_arg	args;
 
 	if (check_contract(&args, argc, argv))
+	{
+		clean_up(&args);
 		return (-1);
+	}
 	if (create_th(&args))
+	{
+		clean_up(&args);
 		return (-1);
+	}
+	clean_up(&args);
 	return (0);
 }
