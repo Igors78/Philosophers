@@ -6,7 +6,7 @@
 /*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 17:33:13 by ioleinik          #+#    #+#             */
-/*   Updated: 2021/09/26 16:34:25 by ioleinik         ###   ########.fr       */
+/*   Updated: 2021/09/27 09:37:24 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 static void	drop_forks(t_arg *args, t_phil *phil)
 {
 	pthread_mutex_lock(&args->access);
-	pthread_mutex_lock(&args->forks[phil->left_fork]);
+	//pthread_mutex_lock(&args->forks[phil->left_fork]);
 	args->state[phil->left_fork] = 1;
-	pthread_mutex_unlock(&args->forks[phil->left_fork]);
-	pthread_mutex_lock(&args->forks[phil->right_fork]);
+	//pthread_mutex_unlock(&args->forks[phil->left_fork]);
+	//pthread_mutex_lock(&args->forks[phil->right_fork]);
 	args->state[phil->right_fork] = 1;
-	pthread_mutex_unlock(&args->forks[phil->right_fork]);
+	//pthread_mutex_unlock(&args->forks[phil->right_fork]);
 	pthread_mutex_unlock(&args->access);
 }
 
@@ -66,13 +66,13 @@ static void	take_forks(t_arg *args, t_phil *phil)
 		pthread_mutex_lock(&args->access);
 		if (args->state[phil->left_fork] && args->state[phil->right_fork])
 		{
-			pthread_mutex_lock(&args->forks[phil->left_fork]);
+			//pthread_mutex_lock(&args->forks[phil->left_fork]);
 			args->state[phil->left_fork] = 0;
-			pthread_mutex_unlock(&args->forks[phil->left_fork]);
+			//pthread_mutex_unlock(&args->forks[phil->left_fork]);
 			m_print(args, "has taken a fork", phil->ph_id);
-			pthread_mutex_lock(&args->forks[phil->right_fork]);
+			//pthread_mutex_lock(&args->forks[phil->right_fork]);
 			args->state[phil->right_fork] = 0;
-			pthread_mutex_unlock(&args->forks[phil->right_fork]);
+			//pthread_mutex_unlock(&args->forks[phil->right_fork]);
 			m_print(args, "has taken a fork", phil->ph_id);
 			pthread_mutex_unlock(&args->access);
 			break ;
